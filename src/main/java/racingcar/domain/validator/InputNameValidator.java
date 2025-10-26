@@ -5,7 +5,7 @@ import static racingcar.util.Messages.*;
 public class InputNameValidator {
     public static void validate(String inputName) {
         String s = trimOrNull(inputName);
-        if (s == null) {
+        if (s == null || containsEmpty(s)) {
             throw new IllegalArgumentException(ERROR_MSG_NAME_EMPTY);
         }
 
@@ -22,6 +22,12 @@ public class InputNameValidator {
             return null;
         }
         return s;
+    }
+
+    private static boolean containsEmpty(String value) {
+        boolean endingComma = value.endsWith(",");
+        boolean continuousComma = value.contains(",,");
+        return endingComma || continuousComma;
     }
 
     private static void isMissingComma(String value) {
