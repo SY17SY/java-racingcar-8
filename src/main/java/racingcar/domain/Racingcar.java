@@ -24,4 +24,8 @@ public class Racingcar {
             onEachRound.accept(cars.snapshot());
         }
     }
+
+    public List<String> findWinners(Cars cars) {
+        return cars.findWinnerNames();
+    }
 }
