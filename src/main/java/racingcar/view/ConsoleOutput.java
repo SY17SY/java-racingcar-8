@@ -1,8 +1,10 @@
 package racingcar.view;
 
+import static racingcar.util.Constants.*;
 import static racingcar.util.Messages.*;
 
 import java.util.List;
+import racingcar.model.CarState;
 
 public class ConsoleOutput {
     public void printPromptName() {
@@ -18,9 +20,12 @@ public class ConsoleOutput {
         System.out.println(PROMPT_MSG_EXECUTION);
     }
 
-    public void printExecutionResult() {
+    public void printExecutionResult(List<CarState> states) {
+        for (CarState s : states) {
+            String bar = PROGRESS.repeat(s.position());
+            System.out.println(s.name() + " : " + bar);
+        }
         System.out.println();
-        // 구현 예정
     }
 
     public void printWinner(List<String> names) {

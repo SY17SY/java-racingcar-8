@@ -28,6 +28,6 @@ public class RacingcarController {
         int count = consoleInput.inputCount();
 
         consoleOutput.printPromptExecution();
-        consoleOutput.printExecutionResult();
+        racingcar.race(cars, count, consoleOutput::printExecutionResult);
     }
 }
