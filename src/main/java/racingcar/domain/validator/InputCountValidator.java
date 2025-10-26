@@ -27,7 +27,14 @@ public class InputCountValidator {
 
     private static void isInvalid(String value) {
         if (!value.matches(COUNT_VALID_PATTERN)) {
+            isNegative(value);
             throw new IllegalArgumentException(ERROR_MSG_COUNT_INVALID);
+        }
+    }
+
+    private static void isNegative(String value) {
+        if (value.startsWith("-")) {
+            throw new IllegalArgumentException(ERROR_MSG_COUNT_NEGATIVE);
         }
     }
 }
