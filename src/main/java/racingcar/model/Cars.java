@@ -11,7 +11,7 @@ public class Cars {
     }
 
     public static Cars fromNames(List<String> names) {
-        return new Cars(names.stream().map(Car::new).toList());
+        return new Cars(names.stream().map(Car::withRandomMoveStrategy).toList());
     }
 
     public void raceOneRound() {
