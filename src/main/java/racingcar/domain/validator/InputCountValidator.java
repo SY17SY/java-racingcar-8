@@ -1,6 +1,5 @@
 package racingcar.domain.validator;
 
-import static racingcar.util.Constants.*;
 import static racingcar.util.Messages.*;
 
 public class InputCountValidator {
@@ -10,7 +9,9 @@ public class InputCountValidator {
             throw new IllegalArgumentException(ERROR_MSG_COUNT_EMPTY);
         }
 
-        isInvalid(s);
+        long longValue = parseLongOrIAE(s);
+        isNegative(longValue);
+        isOverInt(longValue);
     }
 
     private static String trimOrNull(String value) {
@@ -25,16 +26,23 @@ public class InputCountValidator {
         return s;
     }
 
-    private static void isInvalid(String value) {
-        if (!value.matches(COUNT_VALID_PATTERN)) {
-            isNegative(value);
+    private static long parseLongOrIAE(String s) {
+        try {
+            return Long.parseLong(s);
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MSG_COUNT_INVALID);
         }
     }
 
-    private static void isNegative(String value) {
-        if (value.startsWith("-")) {
+    private static void isNegative(Long value) {
+        if (value < 0) {
             throw new IllegalArgumentException(ERROR_MSG_COUNT_NEGATIVE);
+        }
+    }
+
+    private static void isOverInt(Long value) {
+        if (value > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException(ERROR_MSG_COUNT_INT_OVER);
         }
     }
 }
