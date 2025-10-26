@@ -17,4 +17,11 @@ public class Racingcar {
     public Cars createCars(List<String> names) {
         return new Cars(names.stream().map(Car::new).toList());
     }
+
+    public void race(Cars cars, int count, Consumer<List<CarState>> onEachRound) {
+        for (int i = 0; i < count; i++) {
+            cars.raceOneRound();
+            onEachRound.accept(cars.snapshot());
+        }
+    }
 }
