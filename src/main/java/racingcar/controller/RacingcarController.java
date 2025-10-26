@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.domain.Racingcar;
 import racingcar.model.Cars;
@@ -29,5 +30,8 @@ public class RacingcarController {
 
         consoleOutput.printPromptExecution();
         racingcar.race(cars, count, consoleOutput::printExecutionResult);
+
+        consoleOutput.printWinner(racingcar.findWinners(cars));
+        Console.close();
     }
 }
