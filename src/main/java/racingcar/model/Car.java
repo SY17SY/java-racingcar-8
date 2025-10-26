@@ -1,21 +1,25 @@
 package racingcar.model;
 
-import static racingcar.util.Constants.*;
-
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.strategy.MoveStrategy;
+import racingcar.domain.strategy.RandomMoveStrategy;
 
 public class Car {
     private final String name;
+    private final MoveStrategy strategy;
     private int position;
 
-    public Car(String name) {
+    public Car(String name, MoveStrategy strategy) {
         this.name = name;
+        this.strategy = strategy;
         this.position = 0;
     }
 
+    public static Car withRandomMoveStrategy(String name) {
+        return new Car(name, new RandomMoveStrategy());
+    }
+
     public void moveOrStay() {
-        int randomNumber = Randoms.pickNumberInRange(RANDOM_NUM_START, RANDOM_NUM_END);
-        if (randomNumber >= MOVE_FORWARD_NUM) {
+        if (strategy.movable()) {
             position++;
         }
     }
