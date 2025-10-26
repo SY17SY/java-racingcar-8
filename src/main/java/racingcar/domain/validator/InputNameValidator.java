@@ -1,5 +1,6 @@
 package racingcar.domain.validator;
 
+import static racingcar.util.Constants.*;
 import static racingcar.util.Messages.*;
 
 public class InputNameValidator {
@@ -25,9 +26,10 @@ public class InputNameValidator {
     }
 
     private static boolean containsEmpty(String value) {
-        boolean endingComma = value.endsWith(",");
-        boolean continuousComma = value.contains(",,");
-        return endingComma || continuousComma;
+        boolean startingComma = value.startsWith(DELIMITER);
+        boolean endingComma = value.endsWith(DELIMITER);
+        boolean continuousComma = value.contains(DELIMITER + DELIMITER);
+        return startingComma || endingComma || continuousComma;
     }
 
     private static void isMissingComma(String value) {
