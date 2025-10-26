@@ -48,6 +48,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("경주할 자동차의 이름으로 쉼표(,)로 시작하는 문자열을 입력 받을 때: \"경주할 자동차의 이름은 빈 문자열이 될 수 없습니다.\"")
+    void 예외_테스트_쉼표로_시작함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(",pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("자동차 이름은 빈 문자열이 될 수 없습니다.")
+        );
+    }
+
+    @Test
     @DisplayName("경주할 자동차의 이름으로 쉼표(,)로 끝나는 문자열을 입력 받을 때: \"경주할 자동차의 이름은 빈 문자열이 될 수 없습니다.\"")
     void 예외_테스트_쉼표로_끝남() {
         assertSimpleTest(() ->
