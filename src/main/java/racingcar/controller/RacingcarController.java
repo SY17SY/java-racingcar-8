@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import racingcar.util.NameParser;
+import racingcar.domain.parser.NameParser;
 import racingcar.domain.Racingcar;
 import racingcar.model.Cars;
 import racingcar.view.ConsoleInput;

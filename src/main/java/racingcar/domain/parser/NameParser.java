@@ -1,4 +1,4 @@
-package racingcar.util;
+package racingcar.domain.parser;
 
 import static racingcar.util.Constants.DELIMITER;
 
