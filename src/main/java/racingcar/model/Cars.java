@@ -10,6 +10,10 @@ public class Cars {
         this.cars = List.copyOf(cars);
     }
 
+    public static Cars fromNames(List<String> names) {
+        return new Cars(names.stream().map(Car::new).toList());
+    }
+
     public void raceOneRound() {
         cars.forEach(Car::moveOrStay);
     }

@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.util.NameParser;
 import racingcar.domain.Racingcar;
 import racingcar.model.Cars;
 import racingcar.view.ConsoleInput;
@@ -22,8 +23,8 @@ public class RacingcarController {
         consoleOutput.printPromptName();
         String inputName = consoleInput.inputName();
 
-        List<String> names = racingcar.parseNames(inputName);
-        Cars cars = racingcar.createCars(names);
+        List<String> names = NameParser.parseNames(inputName);
+        Cars cars = Cars.fromNames(names);
 
         consoleOutput.printPromptCount();
         int count = consoleInput.inputCount();
