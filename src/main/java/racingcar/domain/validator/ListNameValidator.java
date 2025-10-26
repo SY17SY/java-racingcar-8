@@ -28,7 +28,7 @@ public class ListNameValidator {
     }
 
     private static void isValidCharacters(String name) {
-        if (!name.matches(VALID_PATTERN)) {
+        if (!name.matches(NAME_VALID_PATTERN)) {
             throw new IllegalArgumentException(ERROR_MSG_NAME_INVALID);
         }
     }

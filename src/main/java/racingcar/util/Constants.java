@@ -7,5 +7,6 @@ public class Constants {
 
     public static final String DELIMITER = ",";
     public static final String PROGRESS = "-";
-    public static final String VALID_PATTERN = "^[A-Za-z0-9]+$";
+    public static final String NAME_VALID_PATTERN = "^[A-Za-z0-9]+$";
+    public static final String COUNT_VALID_PATTERN = "\\d+";
 }
