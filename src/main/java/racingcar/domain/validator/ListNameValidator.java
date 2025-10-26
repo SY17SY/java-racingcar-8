@@ -1,5 +1,6 @@
 package racingcar.domain.validator;
 
+import static racingcar.util.Constants.*;
 import static racingcar.util.Messages.*;
 
 import java.util.List;
@@ -9,6 +10,7 @@ public class ListNameValidator {
         isUnique(names);
         for (String name : names) {
             isOverFive(name);
+            isValidCharacters(name);
         }
     }
 
@@ -22,6 +24,12 @@ public class ListNameValidator {
     private static void isOverFive(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ERROR_MSG_NAME_LENGTH);
+        }
+    }
+
+    private static void isValidCharacters(String name) {
+        if (!name.matches(VALID_PATTERN)) {
+            throw new IllegalArgumentException(ERROR_MSG_NAME_INVALID);
         }
     }
 }
