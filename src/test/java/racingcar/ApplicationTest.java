@@ -101,7 +101,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("시도할 횟수로 빈 문자열을 입력 받을 때: \"시도할 횟수를 작성해 주십시오.\"")
     void 예외_테스트_시도_빈_문자열() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("pobi,jav@", ""))
+                assertThatThrownBy(() -> runException("pobi,java", " "))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage("시도할 횟수를 작성해 주십시오.")
         );
