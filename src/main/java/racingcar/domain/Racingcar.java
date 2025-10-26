@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import static racingcar.util.Constants.*;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import racingcar.model.*;
