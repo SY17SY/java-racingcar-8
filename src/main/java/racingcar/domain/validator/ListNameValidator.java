@@ -4,8 +4,12 @@ import static racingcar.util.Constants.*;
 import static racingcar.util.Messages.*;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ListNameValidator {
+    private static final Pattern NAME_VALID_PATTERN = Pattern.compile(NAME_VALID_REGEX);
+
     public static void validate(List<String> names) {
         isUnique(names);
         for (String name : names) {
@@ -28,7 +32,9 @@ public class ListNameValidator {
     }
 
     private static void isValidCharacters(String name) {
-        if (!name.matches(NAME_VALID_PATTERN)) {
+        Matcher matcher = NAME_VALID_PATTERN.matcher(name);
+
+        if (!matcher.matches()) {
             throw new IllegalArgumentException(ERROR_MSG_NAME_INVALID);
         }
     }

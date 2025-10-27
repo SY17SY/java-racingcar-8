@@ -1,5 +1,6 @@
 package racingcar.domain.validator;
 
+import static racingcar.domain.validator.Validator.*;
 import static racingcar.util.Messages.*;
 
 public class InputCountValidator {
@@ -12,18 +13,6 @@ public class InputCountValidator {
         long longValue = parseLongOrIAE(s);
         isNegative(longValue);
         isOverInt(longValue);
-    }
-
-    private static String trimOrNull(String value) {
-        if (value == null) {
-            return null;
-        }
-
-        String s = value.trim();
-        if (s.isEmpty()) {
-            return null;
-        }
-        return s;
     }
 
     private static long parseLongOrIAE(String s) {
