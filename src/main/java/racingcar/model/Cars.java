@@ -23,13 +23,14 @@ public class Cars {
     }
 
     public List<String> findWinnerNames() {
-        int max = cars.stream()
-                .mapToInt(Car::getPosition)
+        List<CarState> states = snapshot();
+        int max = states.stream()
+                .mapToInt(CarState::position)
                 .max()
                 .orElse(0);
-        return cars.stream()
-                .filter(c -> c.getPosition() == max)
-                .map(Car::getName)
+        return states.stream()
+                .filter(s -> s.position() == max)
+                .map(CarState::name)
                 .collect(Collectors.toList());
     }
 }
