@@ -30,9 +30,9 @@ public class RacingcarController {
         int count = consoleInput.inputCount();
 
         consoleOutput.printPromptExecution();
-        racingcar.race(cars, count, consoleOutput::printExecutionResult);
+        List<String> winners = racingcar.race(cars, count, consoleOutput::printExecutionResult);
 
-        consoleOutput.printWinner(racingcar.findWinners(cars));
+        consoleOutput.printWinner(winners);
         Console.close();
     }
 }
