@@ -23,13 +23,13 @@ public class ConsoleOutput {
     public void printExecutionResult(List<CarState> states) {
         for (CarState s : states) {
             String bar = PROGRESS.repeat(s.position());
-            System.out.println(s.name() + " : " + bar);
+            System.out.println(s.name() + COLON + bar);
         }
         System.out.println();
     }
 
     public void printWinner(List<String> names) {
-        String joined = String.join(", ", names);
+        String joined = String.join(WINNER_DELIMITER, names);
         System.out.println(PROMPT_MSG_WINNER_ANNOUNCEMENT + joined);
     }
 }
