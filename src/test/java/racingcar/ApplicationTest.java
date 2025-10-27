@@ -78,6 +78,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("쉼표(,)를 기준으로 분리한 문자열 중 하나가 빈 문자열일 때: \"경주할 자동차의 이름은 빈 문자열이 될 수 없습니다.\"")
+    void 예외_테스트_빈_이름() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ,java", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("자동차 이름은 빈 문자열이 될 수 없습니다.")
+        );
+    }
+
+    @Test
     @DisplayName("쉼표(,)를 기준으로 분리한 문자열 중 2개가 동일한 문자열일 때: \"경주할 자동차의 이름은 모두 달라야 합니다.\"")
     void 예외_테스트_동일한_이름() {
         assertSimpleTest(() ->
